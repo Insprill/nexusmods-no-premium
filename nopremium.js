@@ -1,16 +1,16 @@
 const elements = [
   { selector: 'a[href="https://users.nexusmods.com/account/billing/premium"]', removeParent: true },
-  { selector: '.premium-block', removeParent: false }
+  { selector: '.premium-block', removeParent: false },
+  { selector: '.premium-banner', removeParent: false }
 ];
 
-elements.array.forEach(e => {
-  var links = document.querySelectorAll(e.selector);
-  for (var i = 0; i < links.length; i++) {
-    var parent = links[i].parentNode;
-    if (e.removeParent) {
-      parent.parentNode.removeChild(parent);
+elements.forEach((el) => {
+  const matchedElements = document.querySelectorAll(el.selector);
+  matchedElements.forEach((matchedEl) => {
+    if (el.removeParent) {
+      matchedEl.parentNode.remove();
     } else {
-      parent.removeChild(blocks[i]);
+      matchedEl.remove();
     }
-  }
+  });
 });
