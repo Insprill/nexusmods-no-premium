@@ -3,12 +3,13 @@
   "name": "NexusMods No Premium",
   "version": "1.0.0",
 
-  "description": "Hides the \"Go Premium\" banners on Nexus Mods",
+  "description": "Hides premium advertisements on Nexus Mods",
 
   "content_scripts": [
     {
       "matches": ["*://*.nexusmods.com/*"],
-      "js": ["nopremium.js"]
+      "js": ["nopremium.js"],
+      "run_at": "document_end"
     }
   ]
 }
