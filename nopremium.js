@@ -2,7 +2,8 @@ const elements = [
   { selector: 'a[href="https://users.nexusmods.com/account/billing/premium"]', removeParent: true },
   { selector: '.premium-block', removeParent: false },
   { selector: '.premium-banner', removeParent: false },
-  { selector: '#rj-vortex', removeParent: false }
+  { selector: '#rj-vortex', removeParent: false },
+  { selector: '.subheader, table thead, table tbody, #fastDownloadButton', removeParent: false }
 ];
 
 function removeElements() {
