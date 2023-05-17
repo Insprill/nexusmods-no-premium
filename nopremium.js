@@ -4,13 +4,20 @@ const elements = [
   { selector: '.premium-banner', removeParent: false }
 ];
 
-elements.forEach((el) => {
-  const matchedElements = document.querySelectorAll(el.selector);
-  matchedElements.forEach((matchedEl) => {
-    if (el.removeParent) {
-      matchedEl.parentNode.remove();
-    } else {
-      matchedEl.remove();
-    }
+function removeElements() {
+  elements.forEach((el) => {
+    document.querySelectorAll(el.selector).forEach((matched) => {
+      if (el.removeParent) {
+        matched.parentNode.remove();
+      } else {
+        matched.remove();
+      }
+    });
   });
-});
+}
+
+// Remove elements when the page first loads.
+removeElements();
+
+// Remove elements when the DOM is modified.
+new MutationObserver(removeElements).observe(document.body, { childList: true, subtree: true });
