@@ -7,7 +7,7 @@
 
   "content_scripts": [
     {
-      "matches": ["*://*.nexusmods.com/*"],
+      "matches": ["*://www.nexusmods.com/*"],
       "js": ["nopremium.js"],
       "run_at": "document_end"
     }
