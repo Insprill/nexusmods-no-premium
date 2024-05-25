@@ -15,37 +15,31 @@ const elements = [{
         removeParent: false
     },
     {
-        selector: 'table', // Only select tables and handle the rest in the script
+        selector: '#fastDownloadButton',
         removeParent: false
     }
 ];
 
 function removeElements() {
+    // Iterate over each element and remove them, or their parent node
     elements.forEach((el) => {
-        if (el.selector === 'table') {
-            document.querySelectorAll(el.selector).forEach((table) => {
-                const thContainsText = Array.from(table.querySelectorAll('thead th')).some(th => th.textContent.trim() === 'Choose download type');
-                if (thContainsText) {
-                    // If the table contains the specified <th>, select and remove the relevant elements within it
-                    table.querySelectorAll('.subheader, thead, tbody, #fastDownloadButton').forEach((matched) => {
-                        removeMatchedElement(el, matched)
-                    });
-                }
-            });
-        } else {
-            document.querySelectorAll(el.selector).forEach((matched) => {
-                removeMatchedElement(el, matched)
+        document.querySelectorAll(el.selector).forEach((matched) => {
+            if (el.removeParent) {
+                matched.parentNode.remove();
+            } else {
+                matched.remove();
+            }
+        });
+    });
+
+    // Removes tables with buttons in it, without removing the button itself, without string matching
+    document.querySelectorAll('.table').forEach((table) => {
+        if (table.querySelector('button')) {
+            table.querySelectorAll('.subheader, thead, tbody').forEach((section) => {
+                section.remove();
             });
         }
     });
-}
-
-function removeMatchedElement(el, matched) {
-    if (el.removeParent) {
-        matched.parentNode.remove();
-    } else {
-        matched.remove();
-    }
 }
 
 // Remove elements when the page first loads.
