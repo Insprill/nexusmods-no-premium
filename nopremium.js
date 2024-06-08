@@ -3,10 +3,11 @@ const elements = [
   { selector: '.premium-block', removeParent: false },
   { selector: '.premium-banner', removeParent: false },
   { selector: '#rj-vortex', removeParent: false },
-  { selector: '.subheader, table thead, table tbody, #fastDownloadButton', removeParent: false }
+  { selector: '#fastDownloadButton', removeParent: false }
 ];
 
 function removeElements() {
+  // Iterate over each element and remove them, or their parent node
   elements.forEach((el) => {
     document.querySelectorAll(el.selector).forEach((matched) => {
       if (el.removeParent) {
@@ -15,6 +16,15 @@ function removeElements() {
         matched.remove();
       }
     });
+  });
+
+  // Removes tables with buttons in it, without removing the button itself, without string matching
+  document.querySelectorAll('.table').forEach((table) => {
+    if (table.querySelector('button')) {
+      table.querySelectorAll('.subheader, thead, tbody').forEach((section) => {
+        section.remove();
+      });
+    }
   });
 }
 
