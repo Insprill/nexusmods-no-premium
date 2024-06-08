@@ -1,0 +1,8 @@
+{
+    "manifest_version": 3,
+    "name": null,
+    "version": null,
+    "description": null,
+    "permissions": ["activeTab"],
+    "content_scripts": null
+}
