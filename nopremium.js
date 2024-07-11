@@ -3,7 +3,9 @@ const elements = [
   { selector: '.premium-block', removeParent: false },
   { selector: '.premium-banner', removeParent: false },
   { selector: '#rj-vortex', removeParent: false },
-  { selector: '#fastDownloadButton', removeParent: false }
+  { selector: '#fastDownloadButton', removeParent: false },
+  { selector: '#nonPremiumBanner', removeParent: false },
+  { selector: '#adBlockingBanner', removeParent: false }
 ];
 
 function removeElements() {
