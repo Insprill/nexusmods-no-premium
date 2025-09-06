@@ -6,6 +6,7 @@ const elements = [
   { selector: '#fastDownloadButton', removeParent: false },
   { selector: '#nonPremiumBanner', removeParent: false },
   { selector: '#adBlockingBanner', removeParent: false },
+  { selector: 'div.tabcontent-mod-page > div.container > div.page-layout > div.hr + div.subheader', removeParent: false }, // "Choose from the options below"
   { selector: 'div.tabcontent-mod-page td:empty', removeParent: false } // Blank space left of the "Slow download" button
 ];
 
