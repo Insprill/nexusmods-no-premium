@@ -5,7 +5,8 @@ const elements = [
   { selector: '#rj-vortex', removeParent: false },
   { selector: '#fastDownloadButton', removeParent: false },
   { selector: '#nonPremiumBanner', removeParent: false },
-  { selector: '#adBlockingBanner', removeParent: false }
+  { selector: '#adBlockingBanner', removeParent: false },
+  { selector: 'div.tabcontent-mod-page td:empty', removeParent: false } // Blank space left of the "Slow download" button
 ];
 
 function removeElements() {
