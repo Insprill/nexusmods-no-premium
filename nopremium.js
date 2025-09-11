@@ -33,13 +33,15 @@ function removeElements() {
   });
 
   // New download speed chooser
-  let downloadRoot = document.querySelector("mod-file-download").shadowRoot;
-  let slowDownloadButton = downloadRoot.querySelector("div#upsell-cards > :nth-child(2) > button");
-  if (slowDownloadButton) { // We might've already done this if the DOM got modified
-    let upsellCards = downloadRoot.querySelector("div#upsell-cards");
-    slowDownloadButton.className = slowDownloadButton.className.replace("xs:self-start"); // Fix the button being too small at some screen sizes
-    upsellCards.parentElement.insertBefore(slowDownloadButton, upsellCards);
-    upsellCards.remove();
+  let downloadRoot = document.querySelector("mod-file-download")?.shadowRoot;
+  if (downloadRoot) {
+    let slowDownloadButton = downloadRoot.querySelector("div#upsell-cards > :nth-child(2) > button");
+    if (slowDownloadButton) { // We might've already done this if the DOM got modified
+      let upsellCards = downloadRoot.querySelector("div#upsell-cards");
+      slowDownloadButton.className = slowDownloadButton.className.replace("xs:self-start"); // Fix the button being too small at some screen sizes
+      upsellCards.parentElement.insertBefore(slowDownloadButton, upsellCards);
+      upsellCards.remove();
+    }
   }
 }
 
