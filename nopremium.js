@@ -6,6 +6,7 @@ const elements = [
   { selector: '#fastDownloadButton', removeParent: false },
   { selector: '#nonPremiumBanner', removeParent: false },
   { selector: '#adBlockingBanner', removeParent: false },
+  // Old download speed chooser
   { selector: 'div.tabcontent-mod-page > div.container > div.page-layout > div.hr + div.subheader', removeParent: false }, // "Choose from the options below"
   { selector: 'div.tabcontent-mod-page td:empty', removeParent: false } // Blank space left of the "Slow download" button
 ];
@@ -30,6 +31,16 @@ function removeElements() {
       });
     }
   });
+
+  // New download speed chooser
+  let downloadRoot = document.querySelector("mod-file-download").shadowRoot;
+  let slowDownloadButton = downloadRoot.querySelector("div#upsell-cards > :nth-child(2) > button");
+  if (slowDownloadButton) { // We might've already done this if the DOM got modified
+    let upsellCards = downloadRoot.querySelector("div#upsell-cards");
+    slowDownloadButton.className = slowDownloadButton.className.replace("xs:self-start"); // Fix the button being too small at some screen sizes
+    upsellCards.parentElement.insertBefore(slowDownloadButton, upsellCards);
+    upsellCards.remove();
+  }
 }
 
 // Remove elements when the page first loads.
