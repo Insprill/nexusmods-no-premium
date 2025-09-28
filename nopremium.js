@@ -6,6 +6,8 @@ const elements = [
   { selector: '#fastDownloadButton', removeParent: false },
   { selector: '#nonPremiumBanner', removeParent: false },
   { selector: '#adBlockingBanner', removeParent: false },
+  { selector: 'free-trial-banner', removeParent: false }, // Premium banner on mod pages
+  { selector: 'div.to-premium-900', removeParent: false }, // Premium banner on the homepage
   // Old download speed chooser
   { selector: 'div.tabcontent-mod-page > div.container > div.page-layout > div.hr + div.subheader', removeParent: false }, // "Choose from the options below"
   { selector: 'div.tabcontent-mod-page td:empty', removeParent: false } // Blank space left of the "Slow download" button
